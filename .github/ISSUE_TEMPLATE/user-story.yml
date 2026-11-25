@@ -1,5 +1,5 @@
 name: "📖 User Story"
-description: "Create a user story for NutriQuest AI."
+description: "Propose a user story for NutriQuest AI."
 title: "[US] "
 labels: ["user-story"]
 
@@ -7,8 +7,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        ### 🥗 NutriQuest AI
-        Define a user need, its expected value, and how it can be delivered.
+        ## 🥗 NutriQuest AI
+        Describe a user need and the value it brings to the project.
 
   - type: input
     id: story_id
@@ -34,8 +34,11 @@ body:
     id: story
     attributes:
       label: User Story
-      description: "As a [user], I want [goal], so that [benefit]."
-      placeholder: "As a user, I want ... so that ..."
+      description: "Use the format below."
+      placeholder: |
+        As a [user],
+        I want [goal],
+        So that [benefit].
     validations:
       required: true
 
@@ -43,7 +46,7 @@ body:
     id: acceptance
     attributes:
       label: Acceptance Criteria
-      description: "List clear, testable conditions."
+      description: "How will we know this story is complete?"
       placeholder: |
         - [ ] Criterion 1
         - [ ] Criterion 2
@@ -53,7 +56,8 @@ body:
   - type: dropdown
     id: priority
     attributes:
-      label: Priority (MoSCoW)
+      label: Priority
+      description: "MoSCoW prioritization."
       options:
         - Must Have
         - Should Have
@@ -66,43 +70,55 @@ body:
     attributes:
       value: |
         ---
-        ### 📊 Story Evaluation
-        Explain the reasoning behind each rating.
-
-  - type: textarea
-    id: evaluation
-    attributes:
-      label: Evaluation & Justification
-      description: "Address all three assessment criteria."
-      value: |
-        **1. Feasibility:** High / Medium / Low
-        - Technical requirements and implementation challenges:
-
-        **2. Cost-effectiveness:** High / Medium / Low
-        - Required resources, development effort, and expected value:
-
-        **3. Problem-solving Effectiveness:** High / Medium / Low
-        - User problem, proposed solution, and expected impact:
-    validations:
-      required: true
-
-  - type: textarea
-    id: dependencies
-    attributes:
-      label: Dependencies & Notes
-      description: "Mention related features, assumptions, or constraints (if any)."
-    validations:
-      required: false
+        ## 📊 Evaluation
+        Rate the story and briefly justify your decision.
 
   - type: dropdown
-    id: effort
+    id: feasibility
     attributes:
-      label: Estimated Effort (Story Points)
+      label: Feasibility
       options:
-        - "1 - Very Small"
-        - "2 - Small"
-        - "3 - Medium"
-        - "5 - Large"
-        - "8 - Very Large"
+        - High
+        - Medium
+        - Low
     validations:
       required: true
+
+  - type: dropdown
+    id: cost_effectiveness
+    attributes:
+      label: Cost-effectiveness
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: problem_solving
+    attributes:
+      label: Problem-solving Effectiveness
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: Evaluation Justification
+      description: "Briefly explain your ratings."
+      placeholder: "Why is this story feasible, cost-effective, and useful?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: "Dependencies, assumptions, or constraints (optional)."
+    validations:
+      required: false
