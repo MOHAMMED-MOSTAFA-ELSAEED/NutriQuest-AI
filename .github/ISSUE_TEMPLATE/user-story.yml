@@ -4,7 +4,6 @@ description: "Create and evaluate a user story for NutriQuest AI."
 title: "[US] "
 labels:
   - user-story
-  - needs-triage
 
 body:
   - type: markdown
