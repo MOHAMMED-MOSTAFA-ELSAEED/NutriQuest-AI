@@ -1,1 +1,104 @@
+name: "📖 User Story"
+description: "Create a new user story for NutriQuest AI."
+title: "[US] "
+labels: ["user-story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## NutriQuest AI - User Story Submission
+        Complete the following sections to define a clear and valuable user story.
 
+  - type: input
+    id: story_id
+    attributes:
+      label: User Story ID
+      description: "Example: US-01"
+      placeholder: "US-01"
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_story
+    attributes:
+      label: User Story
+      description: "Use the format: As a [user], I want [goal], so that [benefit]."
+      placeholder: |
+        As a user,
+        I want to ...
+        So that ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: "List the conditions that must be satisfied for this story to be accepted."
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feasibility
+    attributes:
+      label: Feasibility
+      description: "How technically and practically achievable is this feature?"
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: textarea
+    id: feasibility_analysis
+    attributes:
+      label: Feasibility Analysis
+      description: "Explain why this feature is achievable or what challenges it may face."
+    validations:
+      required: true
+
+  - type: textarea
+    id: cost_effectiveness
+    attributes:
+      label: Cost-effectiveness Analysis
+      description: "Explain the development effort, resources, and expected value."
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_solving
+    attributes:
+      label: Problem-solving Effectiveness
+      description: "Explain which user problem this feature addresses and how effectively."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: effort
+    attributes:
+      label: Estimated Effort
+      description: "Use relative Story Points, not hours."
+      options:
+        - "1 - Very Small"
+        - "2 - Small"
+        - "3 - Medium"
+        - "5 - Large"
+        - "8 - Very Large"
+    validations:
+      required: true
