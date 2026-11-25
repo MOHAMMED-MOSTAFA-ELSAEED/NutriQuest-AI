@@ -1,32 +1,50 @@
+
 name: "📖 User Story"
-description: "Create a new user story for NutriQuest AI."
+description: "Propose and evaluate a user story for NutriQuest AI."
 title: "[US] "
-labels: ["user-story"]
+labels:
+  - user-story
+
 body:
   - type: markdown
     attributes:
       value: |
-        ## NutriQuest AI - User Story Submission
-        Complete the following sections to define a clear and valuable user story.
+        ## NutriQuest AI — User Story
+
+        Define a user-centered feature and evaluate its feasibility,
+        cost-effectiveness, and problem-solving value.
 
   - type: input
     id: story_id
     attributes:
       label: User Story ID
-      description: "Example: US-01"
+      description: "Unique identifier (e.g., US-01)."
       placeholder: "US-01"
     validations:
       required: true
 
+  - type: dropdown
+    id: user_role
+    attributes:
+      label: User Role
+      description: "Who will benefit from this functionality?"
+      options:
+        - Guest User
+        - Registered User
+        - Administrator
+        - Other
+    validations:
+      required: true
+
   - type: textarea
-    id: user_story
+    id: story
     attributes:
       label: User Story
-      description: "Use the format: As a [user], I want [goal], so that [benefit]."
+      description: "Follow the standard As a / I want / So that format."
       placeholder: |
-        As a user,
-        I want to ...
-        So that ...
+        As a [user],
+        I want [functionality],
+        so that [benefit].
     validations:
       required: true
 
@@ -34,11 +52,10 @@ body:
     id: acceptance_criteria
     attributes:
       label: Acceptance Criteria
-      description: "List the conditions that must be satisfied for this story to be accepted."
+      description: "Define clear, testable conditions for accepting this story."
       placeholder: |
-        - [ ] Criterion 1
-        - [ ] Criterion 2
-        - [ ] Criterion 3
+        - [ ] Given ..., when ..., then ...
+        - [ ] Given ..., when ..., then ...
     validations:
       required: true
 
@@ -46,18 +63,29 @@ body:
     id: priority
     attributes:
       label: Priority
+      description: "How important is this feature to the project?"
       options:
-        - High
-        - Medium
-        - Low
+        - "Must Have"
+        - "Should Have"
+        - "Could Have"
+        - "Won't Have (This Release)"
     validations:
       required: true
 
-  - type: dropdown
-    id: feasibility
+  - type: markdown
     attributes:
-      label: Feasibility
-      description: "How technically and practically achievable is this feature?"
+      value: |
+        ---
+        ## Evaluation & Justification
+
+        Evaluate this story against the project's three main assessment criteria.
+        Provide evidence and reasoning rather than selecting ratings alone.
+
+  - type: dropdown
+    id: feasibility_rating
+    attributes:
+      label: Feasibility Rating
+      description: "How achievable is this feature within the project scope?"
       options:
         - High
         - Medium
@@ -69,31 +97,81 @@ body:
     id: feasibility_analysis
     attributes:
       label: Feasibility Analysis
-      description: "Explain why this feature is achievable or what challenges it may face."
+      description: "Consider technical complexity, required skills, resources, dependencies, and implementation constraints."
+      placeholder: |
+        Technical requirements:
+        Required resources:
+        Potential challenges:
+        Why is this feature achievable?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cost_rating
+    attributes:
+      label: Cost-effectiveness Rating
+      description: "Does the expected value justify the required development effort and resources?"
+      options:
+        - High
+        - Medium
+        - Low
     validations:
       required: true
 
   - type: textarea
-    id: cost_effectiveness
+    id: cost_analysis
     attributes:
       label: Cost-effectiveness Analysis
-      description: "Explain the development effort, resources, and expected value."
+      description: "Discuss development effort, external services, infrastructure, and simpler alternatives."
+      placeholder: |
+        Required resources or services:
+        Estimated development effort:
+        Expected value:
+        Possible cost-saving alternatives:
+    validations:
+      required: true
+
+  - type: dropdown
+    id: problem_solving_rating
+    attributes:
+      label: Problem-solving Effectiveness Rating
+      description: "How effectively does this feature address a real user problem?"
+      options:
+        - High
+        - Medium
+        - Low
     validations:
       required: true
 
   - type: textarea
-    id: problem_solving
+    id: problem_analysis
     attributes:
-      label: Problem-solving Effectiveness
-      description: "Explain which user problem this feature addresses and how effectively."
+      label: Problem-solving Analysis
+      description: "Identify the user problem, explain how the feature addresses it, and describe its expected impact."
+      placeholder: |
+        User problem:
+        Proposed solution:
+        Expected user benefit:
     validations:
       required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies & Assumptions
+      description: "List other features, data, services, or assumptions required for this story."
+      placeholder: |
+        Dependencies:
+        Assumptions:
+        Constraints:
+    validations:
+      required: false
 
   - type: dropdown
     id: effort
     attributes:
       label: Estimated Effort
-      description: "Use relative Story Points, not hours."
+      description: "Estimate relative complexity using Story Points."
       options:
         - "1 - Very Small"
         - "2 - Small"
@@ -102,3 +180,24 @@ body:
         - "8 - Very Large"
     validations:
       required: true
+
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done
+      description: "What must be completed and verified before this story is considered done?"
+      placeholder: |
+        - [ ] Acceptance criteria are satisfied.
+        - [ ] Implementation is reviewed.
+        - [ ] Relevant tests pass.
+        - [ ] Documentation is updated if needed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes
+      description: "Any additional context, references, or suggestions."
+    validations:
+      required: false
