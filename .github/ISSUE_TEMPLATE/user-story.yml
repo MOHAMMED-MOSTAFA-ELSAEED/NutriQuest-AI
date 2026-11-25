@@ -1,5 +1,6 @@
+
 name: "📖 User Story"
-description: "Propose and evaluate a user story for NutriQuest AI."
+description: "Create and evaluate a user story for NutriQuest AI."
 title: "[US] "
 labels:
   - user-story
@@ -9,16 +10,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 🥗 NutriQuest AI: User Story
-        Describe a user need, the proposed solution, and its expected value.
-        Keep it small, specific, and testable. One story per issue.
+        ## 🥗 NutriQuest AI
+        Define a user need, the proposed solution, and its expected value.
+        Keep each story small, specific, and testable.
 
   - type: input
     id: summary
     attributes:
       label: Short Summary
-      description: "A one-line headline (also helps you complete the issue title above)."
-      placeholder: "e.g., Scan a barcode to log a packaged food"
+      description: "A concise title describing the user story."
+      placeholder: "e.g., Track daily water intake"
     validations:
       required: true
 
@@ -31,7 +32,7 @@ body:
         - Guest User
         - Registered User
         - Administrator
-        - Other (specify in the story)
+        - Other
     validations:
       required: true
 
@@ -39,8 +40,7 @@ body:
     id: area
     attributes:
       label: Feature Area
-      description: "Which part of the product does this touch?"
-      multiple: true
+      description: "Select the primary area of the product."
       options:
         - Onboarding & Accounts
         - Meal Logging
@@ -53,7 +53,7 @@ body:
         - Accessibility & Localization
         - Other
     validations:
-      required: false
+      required: true
 
   - type: textarea
     id: story
@@ -71,8 +71,8 @@ body:
     id: problem
     attributes:
       label: Problem / Context
-      description: "What pain point or opportunity motivates this story? Include evidence if available (feedback, metrics, research)."
-      placeholder: "Currently, users must... which leads to..."
+      description: "What user problem or need motivates this story?"
+      placeholder: "Describe the current problem or opportunity..."
     validations:
       required: false
 
@@ -80,11 +80,10 @@ body:
     id: acceptance
     attributes:
       label: Acceptance Criteria
-      description: "Clear, specific, and testable conditions. Tip: use Given / When / Then for behavior."
+      description: "List clear, specific, and testable conditions."
       value: |
         - [ ] Given [context], when [action], then [expected result]
         - [ ] Given [context], when [action], then [expected result]
-        - [ ] Edge case / error state: [describe]
     validations:
       required: true
 
@@ -92,8 +91,8 @@ body:
     id: out_of_scope
     attributes:
       label: Out of Scope
-      description: "What this story deliberately does NOT cover."
-      placeholder: "- Not included: ..."
+      description: "What is deliberately excluded from this story? (Optional)"
+      placeholder: "List features or behaviors not covered..."
     validations:
       required: false
 
@@ -101,7 +100,7 @@ body:
     id: priority
     attributes:
       label: Priority (MoSCoW)
-      description: "How essential is this story?"
+      description: "How important is this story to the project?"
       options:
         - Must Have
         - Should Have
@@ -115,17 +114,18 @@ body:
       value: |
         ---
         ## 📊 Story Evaluation
-        Rate the story against the three project assessment criteria, then justify each rating.
+        Evaluate the proposed story against the three project assessment criteria.
+        Select a rating and justify your decision.
 
   - type: dropdown
     id: feasibility
     attributes:
       label: Feasibility
-      description: "How technically achievable is this story with our current stack, team, and timeline?"
+      description: "How technically achievable is this story with our team, tools, and timeline?"
       options:
-        - High (straightforward, well understood)
-        - Medium (some complexity or unknowns)
-        - Low (major technical risk or dependency)
+        - High - Straightforward to implement
+        - Medium - Some complexity or challenges
+        - Low - Major technical risks or dependencies
     validations:
       required: true
 
@@ -133,11 +133,11 @@ body:
     id: cost_effectiveness
     attributes:
       label: Cost-effectiveness
-      description: "Does the expected value justify the required resources (time, money, effort)?"
+      description: "Does the expected value justify the required time, effort, and resources?"
       options:
-        - High (big value for modest effort)
-        - Medium (value roughly matches effort)
-        - Low (effort outweighs value)
+        - High - High value for relatively low effort
+        - Medium - Value is reasonable compared to effort
+        - Low - Required effort outweighs expected value
     validations:
       required: true
 
@@ -145,11 +145,11 @@ body:
     id: problem_solving
     attributes:
       label: Problem-solving Effectiveness
-      description: "How well does it solve the user's problem?"
+      description: "How effectively does this story address the user's problem?"
       options:
-        - High (fully resolves the problem)
-        - Medium (partially resolves it)
-        - Low (marginal impact)
+        - High - Directly addresses the problem
+        - Medium - Partially addresses the problem
+        - Low - Limited impact on the problem
     validations:
       required: true
 
@@ -157,11 +157,11 @@ body:
     id: justification
     attributes:
       label: Evaluation Justification
-      description: "Briefly justify each rating with clear reasoning."
+      description: "Explain the reasoning behind each rating."
       value: |
-        - **Feasibility:** 
-        - **Cost-effectiveness:** 
-        - **Problem-solving Effectiveness:** 
+        - **Feasibility:**
+        - **Cost-effectiveness:**
+        - **Problem-solving Effectiveness:**
     validations:
       required: true
 
@@ -169,18 +169,26 @@ body:
     id: notes
     attributes:
       label: Additional Notes
-      description: "Dependencies, assumptions, risks, constraints, mockups, or links (optional)."
-      placeholder: "Add any relevant details, screenshots, or related issues (#123)..."
+      description: "Dependencies, assumptions, risks, or related issues (Optional)."
+      placeholder: "Add any relevant details or references..."
     validations:
       required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## ✅ Definition of Ready
+        Before submitting, review the following quality checklist.
 
   - type: checkboxes
     id: ready
     attributes:
-      label: Definition of Ready
-      description: "Quick self-check before submitting (INVEST)."
+      label: Story Quality Checklist
       options:
-        - label: Independent, can be delivered without waiting on other stories (or dependencies are noted)
-        - label: Small enough to complete in a single sprint
-        - label: Acceptance criteria are testable
-        - label: I searched existing issues and this is not a duplicate
+        - label: The story is clear and focused on one user need.
+        - label: Acceptance criteria are specific and testable.
+        - label: Dependencies and assumptions are identified, if any.
+        - label: I checked for duplicate issues.
+    validations:
+      required: false
